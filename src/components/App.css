@@ -1,3 +1,31 @@
 body {
   background-color: lightgrey;
 }
+
+.rover-container {
+  /*height: 600px;
+  width: 800px;*/
+  display: inline-block;
+}
+
+.bing-container {
+  height: 600px;
+  display: inline-block;
+}
+
+.image-container {
+  width: 80vw;
+}
+
+p {
+  font-size: 30px;
+}
+
+img {
+  max-height: 100%;
+  position: relative;
+}
+
+#image-container {
+  content-align: center;
+}

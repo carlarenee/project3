@@ -1,8 +1,39 @@
 body {
   background-color: lightgrey;
 }
-body {
-  background-color: lightgrey;
+
+.App__rover-container___2k9Z3 {
+  /*height: 600px;
+  width: 800px;*/
+  display: inline-block;
+}
+
+.App__bing-container___uk74t {
+  height: 600px;
+  display: inline-block;
+}
+
+.App__image-container___3qI3J {
+  width: 80vw;
+}
+
+p {
+  font-size: 30px;
+}
+
+img {
+  max-height: 100%;
+  position: relative;
+}
+
+#App__image-container___3qI3J {
+  content-align: center;
+}
+.Bing__bing-container___3ma67 {
+  display: inline-block;
+}
+.Rover__rover-container___1K1DC {
+  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map*/
