@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SavedImagesItem.css';
+//import './SavedImagesItem.css';
 
 export default class SavedImagesItem extends Component{
 
@@ -19,7 +19,7 @@ export default class SavedImagesItem extends Component{
         <div className="saved-vision-container">
           <h3>{this.props.visiontext}</h3>
         </div>
-        <div onClick={() => this.handleDeleteClick(this.props.id, this.props.username)}>Delete</div>
+        <div onClick={() => this.handleDeleteClick(this.props.id, this.props.username)}><img className="DeleteButton" src={this.props.DeleteButton} /></div>
 
       </div>
     );

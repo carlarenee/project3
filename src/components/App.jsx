@@ -11,6 +11,7 @@ import Refresh from '../images/Refresh.png';
 import Crosshair from '../images/Inverse.png';
 import Save from '../images/save.png';
 import User from '../images/user.png';
+import DeleteButton from '../images/deleteicon.png';
 import SavedImagesItem from './SavedImagesItem/SavedImagesItem.jsx';
 
 // create a React Component called _App_
@@ -20,6 +21,7 @@ class App extends Component {
     super();
 
     this.state = {
+      DeleteButton: DeleteButton,
       Save: Save,
       roverImage: Crosshair,
       searchImages: false,
@@ -49,9 +51,10 @@ class App extends Component {
       username: '',
       savedImages: []
     };
-   }
-
+   } 
+  
   getVisionData(url) {
+    //console.log('^^^^^^^^^', url)
     fetch('/vision', {
       method: 'POST',
       headers: {
@@ -65,13 +68,9 @@ class App extends Component {
       this.setState({
         counter: 2,
         visionText: data.description.captions[0].text,
-<<<<<<< HEAD
         CrosshairHover: '',
         bingContainer: 'bing-container',
         bingBox: 'boxcrosshair'
-=======
-        CrosshairHover: ''
->>>>>>> master
       })
     })
     .catch(err => console.log(err))
@@ -86,12 +85,7 @@ class App extends Component {
         roverBox: 'large-images',
         roverContainer: 'large-images-container',
         counter: 1,
-<<<<<<< HEAD
         roverImage: data.photos[1].img_src,
-=======
-        roverImage: data.photos[3].img_src,
-        roverImage: data.photos[2].img_src,
->>>>>>> master
         RoverImageHover: '',
         visionText: <img className="brighten" className="crosshair" src={Crosshair} alt="Click"/>
       })
@@ -122,6 +116,7 @@ class App extends Component {
     fetch(`/vision`)
     .then(r => r.json())
     .then((data) => {
+      console.log('$$$$$$', data)
       this.setState({
         visionText: data
       })
@@ -257,8 +252,8 @@ saveSearch(url, url2, text, username) {
       headers: {
         'Content-type': 'application/json'
       },
-
-      body: JSON.stringify({
+  
+      body: JSON.stringify({ 
         'url': url,
         'url2': url2,
         'text': text,
@@ -284,7 +279,6 @@ getSavedImages(username) {
   })
   .catch(err => console.log(err));
 }
-
 
 handleSaveClick(url, url2, text, username) {
   this.saveSearch(url, url2, text, username);
@@ -317,35 +311,31 @@ deleteSaved(id) {
         <header>
           <div className={this.state.userInfo}>
             <img className="userIcon" src={this.state.User} alt="user"/>
-            <p>{this.state.username}</p>
+            <p className="userName">{this.state.username}</p>
           </div>
         </header>
-
-          <div className="image-container">
-            <div className="login-container">
-              <SignUpForm
-                signUpFormDisplay={this.state.signUpFormDisplay}
-                signUpUsername={this.state.signup.username}
-                signUpPassword={this.state.signup.password}
-                updateFormUsername={event => this.updateFormSignUpUsername(event)}
-                updateFormPassword={event => this.updateFormSignUpPassword(event)}
-                handleFormSubmit={() => this.handleSignUp()}
-              />
-              <LogInForm
-                logInFormDisplay={this.state.logInFormDisplay}
-                loginFunctions={() => this.loginFunctions(this.state.login.username)}
-                className={this.state.login.loggedIn ? 'hidden' : ''}
-                logInUsername={this.state.login.username}
-                logInPassword={this.state.login.password}
-                updateFormUsername={event => this.updateFormLogInUsername(event)}
-                updateFormPassword={event => this.updateFormLogInPassword(event)}
-                handleFormSubmit={() => this.handleLogIn()}
-                getSavedImages={() => this.getSavedImages()}
-              />
+        <div className="image-container">
+          <div className="login-container">
+            <SignUpForm
+              signUpFormDisplay={this.state.signUpFormDisplay}
+              signUpUsername={this.state.signup.username}
+              signUpPassword={this.state.signup.password}
+              updateFormUsername={event => this.updateFormSignUpUsername(event)}
+              updateFormPassword={event => this.updateFormSignUpPassword(event)}
+              handleFormSubmit={() => this.handleSignUp()}
+            />
+            <LogInForm
+              logInFormDisplay={this.state.logInFormDisplay}
+              loginFunctions={() => this.loginFunctions(this.state.login.username)}
+              className={this.state.login.loggedIn ? 'hidden' : ''}
+              logInUsername={this.state.login.username}
+              logInPassword={this.state.login.password}
+              updateFormUsername={event => this.updateFormLogInUsername(event)}
+              updateFormPassword={event => this.updateFormLogInPassword(event)}
+              handleFormSubmit={() => this.handleLogIn()}
+              getSavedImages={() => this.getSavedImages()}
+            />
           </div>
-
-        
-
           <Rover
             roverContainer={this.state.roverContainer}
             roverBox={this.state.roverBox}
@@ -361,8 +351,6 @@ deleteSaved(id) {
             bingImage={this.state.bingImage}
             getBingImage={this.getBingImage.bind(this)}
           />
-        </div>
-
           <div className="vision-container">
             <Vision
               counter={this.state.counter}
@@ -377,30 +365,17 @@ deleteSaved(id) {
           <div className={this.state.refreshButton} onClick={() => {this.refreshPage()}}>
             <img className="refreshImage" src={this.state.Refresh} alt="Refresh"/>
           </div>
+        </div>
           <SavedImages
+            DeleteButton={this.state.DeleteButton}
             username={this.state.username}
             getSavedImages={this.getSavedImages.bind(this)}
             deleteSaved={this.deleteSaved.bind(this)} 
             savedImages={this.state.savedImages}
-            // getSavedImages={this.getSavedImages.bind(this)}
-
           />
-        </div>
-        <div className="refreshButton" onClick={() => {this.refreshPage()}}>
-          <img className="refreshImage" src={this.state.Refresh} alt="Refresh"/>
-        </div>
-          <button>Refresh</button>
-        <div className="save-searches" onClick={() => this.saveSearch(this.state.roverImage, this.state.bingImage, this.state.visionText, this.state.username)}>
-          Save Searches
-        </div>
-        <div className="refreshButton" onClick={() => {this.refreshPage()}}>
-          <img className="refreshImage" src={this.state.Refresh} alt="Refresh"/>
-        </div>
-        <SavedImages
-        SavedImages={this.state.SavedImages}
-        getSavedImages={this.getSavedImages.bind(this)}
-        />
+          <footer></footer>
       </div>
+
     );
   }
 }

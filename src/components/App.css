@@ -34,7 +34,7 @@ body {
 
 .image-container {
   text-align: center;
-  height: 550px;
+  height: 90vh;
 }
 
 .bing-container {
@@ -58,6 +58,11 @@ body {
   text-align: center;
   margin-top: 120px;
   display: block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 p {
@@ -88,6 +93,20 @@ p#username {
   background-color: lightgrey;
   cursor: pointer;
   cursor: hand;
+}
+
+footer {
+  height: 150px;
+}
+
+.DeleteButton {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+
+.DeleteButton:hover {
+  background-color: lightgrey;
 }
 
 .saveImage {
@@ -152,8 +171,14 @@ div.userInfo {
 }
 
 .vision-button {
+  top: 900px;
   margin-top: 40px;
   font-size: 35px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .boxcrosshair {
@@ -170,8 +195,8 @@ div.userInfo {
 }
 
 .crosshair {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   background-color: black;
   background-size: 45px 45px;
   transition: transform .8s ease-in-out;
@@ -264,4 +289,21 @@ input {
 
 .formbutton:hover {
   border: 2px solid lightgrey;
+}
+
+.saved-container{
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.saved-image-container {
+  height: 300px;
+  width: auto;
+  display: inline-block;
+}
+
+.DeleteButton {
+  height: 30px;
+  width: 30px;
 }

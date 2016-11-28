@@ -9,6 +9,7 @@ export default class SavedImages extends Component{
     console.log('saved images.............', this.props);
     return this.props.savedImages.map((result, i) => 
       <SavedImagesItem 
+        DeleteButton={this.props.DeleteButton}
         username={this.props.username}
         getSavedImages={this.props.getSavedImages}
         deleteSaved={this.props.deleteSaved}

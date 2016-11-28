@@ -6,6 +6,7 @@ function getRoverImages(req, res, next) {
  const ROVER_KEY = process.env.ROVER_KEY;
  const month = Math.floor(Math.random() * 12) + 1;
  const day = Math.floor(Math.random() * 28) + 1;
+ //const year = Math.floor(Math.random() * 15) + 2000;
 
  fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-${month}-${day}&api_key=${ROVER_KEY}`)
  .then(r => r.json())

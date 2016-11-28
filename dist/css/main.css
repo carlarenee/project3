@@ -34,7 +34,7 @@ body {
 
 .image-container {
   text-align: center;
-  height: 550px;
+  height: 90vh;
 }
 
 .bing-container {
@@ -58,6 +58,11 @@ body {
   text-align: center;
   margin-top: 120px;
   display: block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 p {
@@ -88,6 +93,20 @@ p#username {
   background-color: lightgrey;
   cursor: pointer;
   cursor: hand;
+}
+
+footer {
+  height: 150px;
+}
+
+.DeleteButton {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+
+.DeleteButton:hover {
+  background-color: lightgrey;
 }
 
 .saveImage {
@@ -152,6 +171,50 @@ div.userInfo {
 }
 
 .vision-button {
+  top: 900px;
+  margin-top: 40px;
+  font-size: 35px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.boxcrosshair {
+  height: 50px;
+  width: 50px;
+  margin-top: 43%;
+  background-color: black;
+  background-size: 45px 45px;
+  transition: transform .8s ease-in-out;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 3px solid #fafafa;
+}
+
+.crosshair {
+  height: 30px;
+  width: 30px;
+  background-color: black;
+  background-size: 45px 45px;
+  transition: transform .8s ease-in-out;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 3px solid #fafafa;
+}
+
+.boxcrosshair:hover {
+  background-color: red;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  cursor: pointer;
+  cursor: hand;
+}
+
+.vision-button {
   margin-top: 40px;
   font-size: 35px;
 }
@@ -182,11 +245,9 @@ div.userInfo {
 }
 
 .boxcrosshair:hover {
-  background-color: red;
+  background-color: blue;
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
-  cursor: pointer;
-  cursor: hand;
 }
 
 .crosshair:hover {
@@ -229,7 +290,23 @@ input {
 .formbutton:hover {
   border: 2px solid lightgrey;
 }
-.bing-container {
+
+.saved-container{
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.saved-image-container {
+  height: 300px;
+  width: auto;
+  display: inline-block;
+}
+
+.DeleteButton {
+  height: 30px;
+  width: 30px;
+}.bing-container {
   display: inline-block;
 }
 .rover-container {
@@ -237,19 +314,5 @@ input {
 }
 .saved-images-container{
   height: 550px;
-}.saved-container{
-  margin: 0 auto;
-  text-align: center;
-}
-
-.saved-image-container {
-  height: 300px;
-  margin: 0 auto;
-}
-
-img {
-  height: 300px;
-  width: auto;
-  display: inline-block;
 }
 /*# sourceMappingURL=main.css.map*/
