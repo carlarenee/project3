@@ -53,8 +53,8 @@ class App extends Component {
     };
    }
 
+  // POST sends our mars imageUrl to Microsoft vision image scanner. It creates a description of the image as a string.
   getVisionData(url) {
-    //console.log('^^^^^^^^^', url)
     fetch('/vision', {
       method: 'POST',
       headers: {
@@ -76,6 +76,7 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  // Fetch call to our rover route. This initiates an API fetch call to NASA's Mars Rover images api. 
   getRoverImages(){
     fetch(`/rover`)
     .then(r => r.json())
@@ -112,6 +113,7 @@ class App extends Component {
     })
   }
 
+  // Retrieve and updates the state of our Vision Text, the data from Microsoft image scanner.
   getVision(){
     fetch(`/vision`)
     .then(r => r.json())
@@ -124,6 +126,7 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  // A POST of Microsoft Vision Data to our 3rd API, Bing image search.
   getBingImage(string){
     fetch(`/bing`, {
       method: 'POST',
@@ -146,7 +149,7 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
-  ///////////////////// Rafa's User Auth Code ////////////////
+  // Lines 152-248 were taken from Rafa's User Auth Code in React_Puppies Lab 
 
 updateFormSignUpUsername(e) {
     console.log(e.target.value);
@@ -186,6 +189,7 @@ updateFormSignUpUsername(e) {
     });
   }
 
+  // Add set state to make signup box disappear on signup
   handleSignUp() {
     fetch('/api/users', {
       headers: {
@@ -208,6 +212,7 @@ updateFormSignUpUsername(e) {
     .catch(err => console.log(err));
   }
 
+  // Add set state to make login box disappear on login 
   handleLogIn() {
     fetch('/api/auth', {
       headers: {
@@ -242,9 +247,7 @@ updateFormSignUpUsername(e) {
     alert(msg);
   }
 
-//////////////////////////////////////////////////////////////
-
-// save search results to database
+// Save search results to database
 saveSearch(url, url2, text, username) {
   console.log('^^^^^^the username is:',username)
   return fetch(`/images`, {
@@ -252,19 +255,17 @@ saveSearch(url, url2, text, username) {
       headers: {
         'Content-type': 'application/json'
       },
-
       body: JSON.stringify({
         'url': url,
         'url2': url2,
         'text': text,
         'username': username
        })
-
     })
   .catch(err => console.log(err));
-
 }
 
+// Pass username so user can save collections
 getSavedImages(username) {
   console.log('hey i am fetching images for', username)
   return fetch(`/images/${username}`, {
@@ -280,17 +281,19 @@ getSavedImages(username) {
   .catch(err => console.log(err));
 }
 
+// Add setTimeout to render saved images, it was breaking because images took too long to load.
 handleSaveClick(url, url2, text, username) {
   this.saveSearch(url, url2, text, username);
   setTimeout(() => {this.getSavedImages(username)}, 300);
 }
 
-
+// Combine two functions on login click.
 loginFunctions(username) {
   this.getSavedImages(username);
   this.handleLogIn();
 }
 
+// Pass saved search id allowing user to delete from their collection. Then reload the saved images.
 deleteSaved(id) {
   fetch(`/images/${id}`, {
     method: 'delete'
@@ -303,7 +306,6 @@ deleteSaved(id) {
     })
     .catch(err => console.log(err));
 }
-
 
   render(){
     return (
